@@ -19,7 +19,6 @@ import (
 	"github.com/jeessy2/ddns-go/v6/dns"
 	"github.com/jeessy2/ddns-go/v6/util"
 	"github.com/jeessy2/ddns-go/v6/util/osutil"
-	"github.com/jeessy2/ddns-go/v6/util/update"
 	"github.com/jeessy2/ddns-go/v6/web"
 	"github.com/kardianos/service"
 )
@@ -27,9 +26,6 @@ import (
 // ddns-go 版本
 // ddns-go version
 var versionFlag = flag.Bool("v", false, "ddns-go version")
-
-// 更新 ddns-go
-var updateFlag = flag.Bool("u", false, "Upgrade ddns-go to the latest version")
 
 // 监听地址
 var listen = flag.String("l", ":9876", "Listen address")
@@ -74,10 +70,6 @@ func main() {
 	flag.Parse()
 	if *versionFlag {
 		fmt.Println(version)
-		return
-	}
-	if *updateFlag {
-		update.Self(version)
 		return
 	}
 
